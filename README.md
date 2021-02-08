@@ -1,34 +1,31 @@
-# geoimagine-setup_db
+# geoimagine02-setup_db
 
-Karttur Geoimagine database setup python project
+Python package for setting up a Postgres database for
+Kartturs Geoimagine Framework
 
 ## Introduction
 
-Karttur's GeoImagine Framework is an attempt for semi-automated processing of spatial data. 
-The database setup (setup_db) package contains the processing for 
-setting up the Framework postgreSQL database. It contains 4 python (**.py**) modules:
+Kartturs GeoImagine Framework is an attempt for semi-automated processing of spatial data.
+The database setup (setup_db) package contains the processing for
+setting up the Framework postgreSQL database. The package contains the following (**.py**) modules:
 
 
 - \_\_init.py\_\_
+- param_json_mini.py
 - setup\_db\_class.py
 - setup\_db\_main.py
 - version.py
+
+### \_\_init.py\_\_
+
+Links to the key classes and functions.
+
+### setup\_db\_main.py
+
+The main interface for initiating the setup of the PostgreQQL database.
 
 ### setup\_db\_class.py
 
 #### GeoImagine dependencies
 
-geoimagine.support.karttur_dt
-
-#### Classes
-
-### setup\_db\_main.py
-
-#### GeoImagine dependencies
-
-geoimagine.support.karttur_dt
-
-#### Classes
-
-
-
+support.karttur_dt

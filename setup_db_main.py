@@ -115,8 +115,10 @@ def SetupSchemasTables(projFPN,db):
     # Connect to the Postgres Server
     session = PGsession(query)
     
-    #Loop over all json files and create Schemas and Tables
+    # Loop over all json files and create Schemas and Tables
     for jsonObj in jsonL:
+        
+        print ('jsonObj',jsonObj)
         
         session.ReadRunJson(jsonObj)
         
@@ -125,10 +127,8 @@ def SetupSchemasTables(projFPN,db):
 
 if __name__ == "__main__":
 
-    prodDB = 'postgres'
-
     '''
-    This module should only be run at the very startup of building the Karttur Geo Imagine framework.
+    This module should only be run at the very startup of building the Karttur GeoImagine framework.
     To run, remove the comment "#prodDB" and set the name of your production DB ("YourProdDB")
     '''
     
@@ -136,19 +136,21 @@ if __name__ == "__main__":
     # prodDB = 'YourProdDB' #'e.g. postgres or geoimagine
     prodDB = 'geoimagine'
 
-    '''SetUpProdDb creates an empty Postgres database.'''
-    SetUpProdDb(prodDB)
+    '''
+    SetUpProdDb creates an empty Postgres database.
+    '''
+    #SetUpProdDb(prodDB)
 
     '''
-    SetupSchemasTables creates schemas and tables from xml files, with the relative path to the
-    xml files given in the plain text file "projFPN".
+    SetupSchemasTables creates schemas and tables from json files, with the relative path to the
+    json files given in the plain text file "projFPN".
     '''
-    projFPN = 'doc/db_karttur_setup_20201231.txt'
-    SetupSchemasTables(projFPN,prodDB)
+    projFPN = path.join('doc','db_karttur_setup_20201231.txt')
+    #SetupSchemasTables(projFPN,prodDB)
 
     '''
     #db_karttur_dbusers_YYYYMMDDX.xml adds db users for handling connections to postgres db
     '''
-    projFPN = 'doc/db_karttur_dbusers_20210102.txt'
-    SetupSchemasTables(projFPN,prodDB)
+    projFPN = path.join('doc','db_karttur_dbusers_20210102.txt')
+    #SetupSchemasTables(projFPN,prodDB)
 
