@@ -5,11 +5,20 @@ Modified on 31 dec 2020 (changed to json instead of xml as input)
 @author: thomasgumbricht
 '''
 
-from setup_db import PGsession
+# Standard library imports
+
+from os import path
+
+# Third party imports
+
 from base64 import b64encode
 
 import netrc
-from os import path
+
+# Package application imports
+
+from setup_db import PGsession 
+# Alternatively use from setup_db import *
 
 def DbConnect(db):
     '''
@@ -139,7 +148,7 @@ if __name__ == "__main__":
     '''
     SetUpProdDb creates an empty Postgres database.
     '''
-    #SetUpProdDb(prodDB)
+    SetUpProdDb(prodDB)
 
     '''
     SetupSchemasTables creates schemas and tables from json files, with the relative path to the

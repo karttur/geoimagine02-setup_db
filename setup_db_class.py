@@ -8,17 +8,21 @@ The initiating expects a query dictionary with
 database [db], user [user] and password [pswd] with [pswd] encoded using the base64 package
 '''
 
-import psycopg2
-#from setup_db import Params
-from base64 import b64decode
-from xml.dom import minidom
-from sys import exit
-from os import path
-from pprint import pprint
-
+# Standard library imports
 
 import json
-        
+
+import psycopg2
+
+from sys import exit
+
+# Third party imports
+
+from base64 import b64decode
+
+from pprint import pprint
+
+       
 class Struct(object):
     ''' Recursive class for building project objects
     '''
@@ -390,69 +394,3 @@ class PGsession:
         
         self.conn.close()
         
-def SetupDb(docpath, projFN, db):
-    '''
-    Setup processes
-    '''
-    
-    srcFP = path.join(path.dirname(__file__),docpath)
-    
-    projFPN = path.join(srcFP,projFN)
-    
-    # Get the full path to the project text file
-    dirPath = path.split(projFPN)[0]
-    
-    if not path.exists(projFPN):
-        
-        exitstr = 'EXITING, project file missing: %s' %(projFPN)
-        
-        exit( exitstr )
-    
-    infostr = 'Processing %s' %(projFPN)
-    
-    print (infostr)
-    
-    # Open and read the text file linking to all json files defining the project
-    with open(projFPN) as f:
-        
-        jsonL = f.readlines()
-    
-    # Clean the list of json objects from comments and whithespace etc    
-    jsonL = [path.join(dirPath,x.strip())  for x in jsonL if len(x) > 10 and x[0] != '#']
-        
-    # Get the user and password for connecting to the db
-    query = DbConnect(db)
-
-    # Connect to the Postgres Server
-    session = PGsession(query)
-        
-    ProcPar = JsonParams(session)
-    
-    processL = []
-    
-    #Loop over all json files and create Schemas and Tables
-    for jsonObj in jsonL:
-        
-        print ('    Setting up jsonObj:',jsonObj)
-        
-        processL.append( ProcPar._JsonObj(jsonObj) )
-        
-        #processD = session.ReadRunJson(jsonObj, db)
-    
-    # Close the db connection for getting processes and user
-    session._Close()
-    
-    for processD in processL:
-
-        for k in range(len(processD)):
-            
-            print (k, processD[k]) 
-
-            if processD[k]['PP'].rootprocid == 'manageprocess':
-    
-                ProcessProcess(processD[k]['PP'])
-                    
-            elif processD[k]['PP'].rootprocid == 'ManageRegion':
-    
-                #ProcessDefaultRegions(db, process, self.procsys, self.userproject, self.userid, self.usercat, self.stratum)
-                ProcessDefaultRegions(processD[k]['PP'])
