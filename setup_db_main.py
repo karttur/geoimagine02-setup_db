@@ -1,6 +1,7 @@
 '''
 Created on 31 feb. 2018
 Modified on 31 dec 2020 (changed to json instead of xml as input)
+Last update 12 Feb 2021
 
 @author: thomasgumbricht
 '''
@@ -17,7 +18,7 @@ import netrc
 
 # Package application imports
 
-from setup_db import PGsession 
+from geoimagine.setup_db import PGsession 
 # Alternatively use from setup_db import *
 
 def DbConnect(db):

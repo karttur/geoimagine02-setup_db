@@ -7,7 +7,9 @@ Package belonging to Karttur´s GeoImagine Framework.
 Author
 ------
 Thomas Gumbricht (thomas.gumbricht@karttur.com)
+
 Last update: 11 Feb 2021
+
 """
 
 from .version import __version__, VERSION, metadataD
