@@ -61,7 +61,7 @@
       "delete": false,
       "parameters": {
         "db": "karttur",
-        "schema": "ease2northpole",
+        "schema": "ease2n",
         "table": "regions",
         "command": [
           "regionid varchar(64)",
@@ -78,7 +78,7 @@
       "delete": false,
       "parameters": {
         "db": "karttur",
-        "schema": "ease2southpole",
+        "schema": "ease2s",
         "table": "regions",
         "command": [
           "regionid varchar(64)",
@@ -95,7 +95,7 @@
       "delete": false,
       "parameters": {
         "db": "karttur",
-        "schema": "ease2tropics",
+        "schema": "ease2t",
         "table": "regions",
         "command": [
           "regionid varchar(64)",

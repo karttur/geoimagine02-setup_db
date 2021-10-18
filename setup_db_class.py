@@ -1,5 +1,7 @@
 '''
 Created on 21 feb. 2018
+Last update 18 Oct 2021
+
 @author: thomasgumbricht
 
 'db_setup_class' is used for creating database schemas and tables as defined in xml files.
@@ -116,7 +118,7 @@ class PGsession:
             
             if self.verbose > 1:
                 
-                print ('process parameters')
+                print ('    process parameters:')
                 pprint (vars(process))
                              
             if process.processid == 'createschema':
@@ -153,7 +155,7 @@ class PGsession:
             
             sql = "SELECT schema_name FROM information_schema.schemata WHERE schema_name = '%(schema)s';"%query
                     
-            print (sql)
+            print ('    ',sql)
         
         self.cursor.execute("SELECT schema_name FROM information_schema.schemata WHERE schema_name = '%(schema)s';"%query)
         
@@ -167,7 +169,7 @@ class PGsession:
             
                     sql = "DROP SCHEMA %(schema)s" %query
                     
-                    print (sql)
+                    print ('    ',sql)
      
                 self.cursor.execute("DROP SCHEMA %(schema)s" %query) 
             
@@ -201,7 +203,7 @@ class PGsession:
             
             sql = "SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = '%(schema)s' AND table_name = '%(table)s');"%query
                     
-            print (sql)
+            print ('    ',sql)
         
         self.cursor.execute("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = '%(schema)s' AND table_name = '%(table)s');"%query)
        
@@ -217,7 +219,7 @@ class PGsession:
             
                     sql = "DROP TABLE %(schema)s.%(table)s;" %query
                     
-                    print (sql)
+                    print ('    ',sql)
 
                 self.cursor.execute("DROP TABLE %(schema)s.%(table)s;" %query) 
             
@@ -234,7 +236,7 @@ class PGsession:
                             
             sql = "CREATE TABLE %(schema)s.%(table)s ( %(cmd)s );" %query
                 
-            print (sql)
+            print ('    ',sql)
  
         self.cursor.execute("CREATE TABLE %(schema)s.%(table)s ( %(cmd)s );" %query)
         
@@ -300,7 +302,7 @@ class PGsession:
                 
                 sql = "SELECT * FROM %(schema)s.%(table)s WHERE %(where)s;" %query
                 
-                print (sql)
+                print ('    ',sql)
                         
             self.cursor.execute("SELECT * FROM %(schema)s.%(table)s WHERE %(where)s;" %query)    
             
@@ -314,7 +316,7 @@ class PGsession:
                 
                         sql = "DELETE FROM %(schema)s.%(table)s WHERE %(where)s;" %query
                         
-                        print (sql)
+                        print ('    ',sql)
 
                     self.cursor.execute("DELETE FROM %(schema)s.%(table)s WHERE %(where)s;" %query) 
                 
@@ -333,7 +335,7 @@ class PGsession:
             
                 sql = "INSERT INTO %(schema)s.%(table)s (%(cols)s) VALUES (%(vals)s);" %queryinsert
                 
-                print (sql)
+                print ('    ',sql)
 
             self.cursor.execute("INSERT INTO %(schema)s.%(table)s (%(cols)s) VALUES (%(vals)s);" %queryinsert)
             
@@ -350,7 +352,7 @@ class PGsession:
         
         if not record[0]:
         
-            print ( 'Warning: Can not update; Schema %s Table %s does not exist' %(schema,table) )
+            print ( 'WARNNG: Can not update; Schema %s Table %s does not exist' %(schema,table) )
             
             return
                 
@@ -372,7 +374,7 @@ class PGsession:
             
             sql = "UPDATE %(schema)s.%(table)s SET (%(cols)s) = (%(vals)s) WHERE %(where)s;" %query
             
-            print (sql)
+            print ('    ',sql)
         
         self.cursor.execute("UPDATE %(schema)s.%(table)s SET (%(cols)s) = (%(vals)s) WHERE %(where)s;" %query)
         

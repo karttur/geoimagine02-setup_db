@@ -1,7 +1,7 @@
 '''
 Created on 31 feb. 2018
 Modified on 31 dec 2020 (changed to json instead of xml as input)
-Last update 12 Feb 2021
+Last update 18 Oct 2021
 
 @author: thomasgumbricht
 '''
@@ -62,7 +62,7 @@ def SetUpProdDb(prodDB):
     record = iniSession.cursor.fetchone()
     
     # Print Current (cluster) db
-    print ('Current database', record[0])
+    print ('    Current database', record[0])
     
     # Select the logged in user
     iniSession.cursor.execute("SELECT user")
@@ -71,7 +71,7 @@ def SetUpProdDb(prodDB):
     record = iniSession.cursor.fetchone()
     
     # Print Current user
-    print ('User', record[0])
+    print ('    User', record[0])
     
     # Select all databases in the cluster db
     iniSession.cursor.execute("SELECT datname FROM pg_database;")
@@ -83,16 +83,16 @@ def SetUpProdDb(prodDB):
     dbL = [item[0] for item in records]
    
     # Print the list of all databases in the cluster
-    print ('Databases', dbL)
+    print ('    Databases', dbL)
 
     # Check if your required production db is in the list
     if not prodDbD['dbname'] in dbL:
         
         # The requested production db does not exists
         
-        printstr = 'Creating database: %s' %( prodDbD['dbname'])
+        printstr = '    Creating database: %s' %( prodDbD['dbname'])
         
-        print (printstr)
+        
 
         #Import the psycopg extension that allows you to create a new db
         from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
@@ -102,7 +102,13 @@ def SetUpProdDb(prodDB):
         
         #Create your production db
         iniSession.cursor.execute("CREATE DATABASE %(dbname)s;" %prodDbD)
-
+        
+    else:
+        
+        printstr = '    Database %s already exists' %( prodDbD['dbname'])
+        
+    print (printstr)
+    
 def SetupSchemasTables(projFPN,db):
     '''
     Setup schemas and tables
@@ -128,7 +134,7 @@ def SetupSchemasTables(projFPN,db):
     # Loop over all json files and create Schemas and Tables
     for jsonObj in jsonL:
         
-        print ('jsonObj',jsonObj)
+        print ('    jsonObj',jsonObj)
         
         session.ReadRunJson(jsonObj)
         
@@ -155,12 +161,12 @@ if __name__ == "__main__":
     SetupSchemasTables creates schemas and tables from json files, with the relative path to the
     json files given in the plain text file "projFPN".
     '''
-    projFPN = path.join('doc','db_karttur_setup_20201231.txt')
-    SetupSchemasTables(projFPN,prodDB)
+    projFPN = path.join('doc','db_karttur_setup_20211018.txt')
+    #SetupSchemasTables(projFPN,prodDB)
 
     '''
     #db_karttur_dbusers_YYYYMMDDX.xml adds db users for handling connections to postgres db
     '''
-    projFPN = path.join('doc','db_karttur_dbusers_20210102.txt')
-    #SetupSchemasTables(projFPN,prodDB)
+    projFPN = path.join('doc','db_karttur_dbusers_20211018.txt')
+    SetupSchemasTables(projFPN,prodDB)
 

@@ -132,7 +132,7 @@
       "delete": false,
       "parameters": {
         "db": "karttur",
-        "schema": "ease2northpole"
+        "schema": "ease2n"
       }
     },
     {
@@ -141,7 +141,7 @@
       "delete": false,
       "parameters": {
         "db": "karttur",
-        "schema": "ease2southpole"
+        "schema": "ease2s"
       }
     },
     {
@@ -150,7 +150,7 @@
       "delete": false,
       "parameters": {
         "db": "karttur",
-        "schema": "ease2tropics"
+        "schema": "ease2t"
       }
     },
     {
