@@ -1,0 +1,100 @@
+{
+  "process": [
+    {
+      "processid": "createtable",
+      "overwrite": false,
+      "delete": false,
+      "parameters": {
+        "db": "karttur",
+        "schema": "ease2t",
+        "table": "tilecoords",
+        "command": [
+          "xytile char(6)",
+          "xtile smallint",
+          "ytile smallint",
+          "minxease double precision",
+          "minyease double precision",
+          "maxxease double precision",
+          "maxyease double precision",
+          "west double precision",
+          "south double precision",
+          "east double precision",
+          "north double precision",
+          "ullat double precision",
+          "ullon double precision",
+          "lrlat double precision",
+          "lrlon double precision",
+          "urlat double precision",
+          "urlon double precision",
+          "lllat double precision",
+          "lllon double precision",
+          "PRIMARY KEY (xytile)"
+        ]
+      }
+    },
+    {
+      "processid": "createtable",
+      "overwrite": false,
+      "delete": false,
+      "parameters": {
+        "db": "karttur",
+        "schema": "ease2n",
+        "table": "tilecoords",
+        "command": [
+          "xytile char(6)",
+          "xtile smallint",
+          "ytile smallint",
+          "minxease double precision",
+          "minyease double precision",
+          "maxxease double precision",
+          "maxyease double precision",
+          "west double precision",
+          "south double precision",
+          "east double precision",
+          "north double precision",
+          "ullat double precision",
+          "ullon double precision",
+          "lrlat double precision",
+          "lrlon double precision",
+          "urlat double precision",
+          "urlon double precision",
+          "lllat double precision",
+          "lllon double precision",
+          "PRIMARY KEY (xytile)"
+        ]
+      }
+    },
+    {
+      "processid": "createtable",
+      "overwrite": false,
+      "delete": false,
+      "parameters": {
+        "db": "karttur",
+        "schema": "ease2s",
+        "table": "tilecoords",
+        "command": [
+          "xytile char(6)",
+          "xtile smallint",
+          "ytile smallint",
+          "minxease double precision",
+          "minyease double precision",
+          "maxxease double precision",
+          "maxyease double precision",
+          "west double precision",
+          "south double precision",
+          "east double precision",
+          "north double precision",
+          "ullat double precision",
+          "ullon double precision",
+          "lrlat double precision",
+          "lrlon double precision",
+          "urlat double precision",
+          "urlon double precision",
+          "lllat double precision",
+          "lllon double precision",
+          "PRIMARY KEY (xytile)"
+        ]
+      }
+    }
+  ]
+}

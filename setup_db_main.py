@@ -162,7 +162,7 @@ if __name__ == "__main__":
     json files given in the plain text file "projFPN".
     '''
     projFPN = path.join('doc','db_karttur_setup_20211018.txt')
-    #SetupSchemasTables(projFPN,prodDB)
+    SetupSchemasTables(projFPN,prodDB)
 
     '''
     #db_karttur_dbusers_YYYYMMDDX.xml adds db users for handling connections to postgres db

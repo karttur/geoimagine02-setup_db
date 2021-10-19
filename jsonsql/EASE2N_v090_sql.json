@@ -1,0 +1,100 @@
+{
+  "process": [
+    {
+      "processid": "createtable",
+      "overwrite": false,
+      "parameters": {
+        "db": "karttur",
+        "schema": "ease2n",
+        "table": "products",
+        "command": [
+          "dataid character(26)",
+          "startdate date",
+          "enddate date",
+          "resolkm smallint",
+          "temporal varchar(16)",
+          "version smallint",
+          "label TEXT",
+          "url varchar(255)",
+          "tgcomment varchar(255)",
+          "PRIMARY KEY (dataid,version)"
+        ]
+      }
+    },
+    {
+      "processid": "tableinsert",
+      "overwrite": false,
+      "delete": false,
+      "parameters": {
+        "db": "karttur",
+        "schema": "ease2n",
+        "table": "products",
+        "command": {
+          "columns": [
+            "dataid",
+            "version",
+            "startdate",
+            "enddate",
+            "resolkm",
+            "temporal",
+            "label",
+            "url",
+            "tgcomment"
+          ],
+          "values": [
+            [
+              "'MOD29E1D'",
+              "6",
+              "'2000-02-24'",
+              "'2025-12-31'",
+              "4",
+              "'1D'",
+              "'MODIS/Terra Sea Ice Extent and IST Daily L3 Global 4km EASE-Grid Day, Version 6'",
+              "'https://nsidc.org/data/MOD29E1D/versions/6'",
+              "'Daily Sea ice at 4 km in EASE Grid - single file'"
+            ],
+            [
+              "'MYD29E1D'",
+              "6",
+              "'2000-02-24'",
+              "'2025-12-31'",
+              "4",
+              "'1D'",
+              "'MODIS/Terra Sea Ice Extent and IST Daily L3 Global 4km EASE-Grid Day, Version 6'",
+              "'https://nsidc.org/data/MOD29E1D/versions/6'",
+              "'Daily Sea ice at 4 km in EASE Grid - single file'"
+            ]
+
+          ]
+        }
+      }
+    },
+    {
+      "processid": "createtable",
+      "overwrite": false,
+      "delete": false,
+      "parameters": {
+        "db": "karttur",
+        "schema": "ease2n",
+        "table": "urldata",
+        "command": [
+          "fileid varchar(64)",
+          "filename character varying(128)",
+          "source character varying(32)",
+          "product varchar(24)",
+          "version character(3)",
+          "acqdate date",
+          "doy smallint",
+          "content varchar(16) DEFAULT 'original'",
+          "downloaded character(1) DEFAULT 'N'",
+          "organized character(1) DEFAULT 'N'",
+          "exploded character(1) DEFAULT 'N'",
+          "redundant character(1) DEFAULT 'N'",
+          "deleted character(1) DEFAULT 'N'",
+          "maskstatus character(1) DEFAULT 'Y'",
+          "PRIMARY KEY (fileid,product,version)"
+        ]
+      }
+    }
+  ]
+}
